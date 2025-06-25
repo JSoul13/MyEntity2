@@ -79,6 +79,30 @@
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0.3; }
         }
+        .spirit-profile {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 1px solid #4a5568;
+            transition: all 0.3s ease;
+        }
+        .spirit-profile:hover {
+            border-color: #9f7aea;
+            transform: translateY(-2px);
+        }
+        .evidence-tag {
+            background: rgba(159, 122, 234, 0.2);
+            border: 1px solid #9f7aea;
+            color: #e2e8f0;
+        }
+        .community-action {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        .help-indicator {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px #ff6b6b; }
+            to { box-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
+        }
     </style>
 </head>
 <body class="text-white">
@@ -100,7 +124,7 @@
                     </div>
                     <h1 class="text-2xl font-bold horror-font">ENTITY AI ANALYZER</h1>
                 </div>
-                <div class="text-purple-300 text-sm">Live Analysis Demo</div>
+                <div class="text-purple-300 text-sm">Community Spirit Helper</div>
             </div>
         </header>
 
@@ -108,21 +132,21 @@
             <!-- Demo Controls -->
             <div class="text-center mb-8">
                 <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Video Evidence Analysis Demo
+                    Spirit Communication Analysis
                 </h2>
-                <p class="text-gray-300 mb-6">Watch how Entity AI processes paranormal evidence in real-time</p>
+                <p class="text-gray-300 mb-6">Help lost souls find peace through community collaboration and AI analysis</p>
                 <button id="startDemo" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg">
-                    <i class="fas fa-play mr-2"></i>Start Analysis Demo
+                    <i class="fas fa-play mr-2"></i>Start Spirit Analysis
                 </button>
                 <button id="resetDemo" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all ml-4" style="display: none;">
-                    <i class="fas fa-redo mr-2"></i>Reset Demo
+                    <i class="fas fa-redo mr-2"></i>Reset Analysis
                 </button>
             </div>
 
             <!-- Analysis Progress -->
             <div id="progressSection" class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700 mb-8" style="display: none;">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-semibold text-purple-300">Analysis Progress</h3>
+                    <h3 class="text-xl font-semibold text-purple-300">Spirit Communication Analysis</h3>
                     <span id="progressText" class="text-gray-400">Initializing...</span>
                 </div>
                 <div class="w-full bg-gray-700 rounded-full h-3">
@@ -136,13 +160,14 @@
                     <!-- Mock Video Frame -->
                     <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
                         <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-video mr-2"></i>Video Analysis
+                            <i class="fas fa-video mr-2"></i>Evidence Analysis
                         </h3>
                         <div class="video-frame aspect-video rounded-lg mb-4 flex items-center justify-center relative">
                             <div class="text-gray-500 text-center">
                                 <i class="fas fa-video text-4xl mb-2"></i>
-                                <p>Haunted_Hospital_Investigation.mp4</p>
-                                <p class="text-sm">Duration: 12:34 | Resolution: 1920x1080</p>
+                                <p>St_Marys_Hospital_Investigation.mp4</p>
+                                <p class="text-sm">Duration: 12:34 | Location: Salem, MA</p>
+                                <p class="text-xs text-purple-300">Recorded: October 31, 2024 - 11:47 PM</p>
                             </div>
                             <!-- Detection boxes will be added dynamically -->
                         </div>
@@ -155,13 +180,13 @@
                     <!-- Audio Analysis -->
                     <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
                         <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-microphone mr-2"></i>Audio Analysis (EVP Detection)
+                            <i class="fas fa-microphone mr-2"></i>Spirit Voice Analysis (EVP)
                         </h3>
                         <div class="waveform rounded mb-4"></div>
                         <div class="text-sm text-gray-400">
                             <div>Frequency Range: 20Hz - 20kHz</div>
-                            <div>Noise Reduction: Active</div>
-                            <div>EVP Sensitivity: High</div>
+                            <div>Spirit Voice Enhancement: Active</div>
+                            <div>Language Detection: English</div>
                         </div>
                     </div>
                 </div>
@@ -171,7 +196,7 @@
                     <!-- Real-time Detections -->
                     <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
                         <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-search mr-2"></i>Real-time Detections
+                            <i class="fas fa-search mr-2"></i>Spirit Communications
                         </h3>
                         <div id="detectionsList" class="space-y-3 max-h-64 overflow-y-auto">
                             <!-- Detections will be added here -->
@@ -188,8 +213,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">1</div>
                                     <div>
-                                        <div class="font-semibold">Frame Extraction</div>
-                                        <div class="text-sm text-gray-400">Extracting frames for analysis</div>
+                                        <div class="font-semibold">Environmental Scan</div>
+                                        <div class="text-sm text-gray-400">Analyzing location and conditions</div>
                                     </div>
                                 </div>
                             </div>
@@ -197,8 +222,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">2</div>
                                     <div>
-                                        <div class="font-semibold">Motion Detection</div>
-                                        <div class="text-sm text-gray-400">Analyzing movement patterns</div>
+                                        <div class="font-semibold">Spirit Presence Detection</div>
+                                        <div class="text-sm text-gray-400">Identifying paranormal entities</div>
                                     </div>
                                 </div>
                             </div>
@@ -206,8 +231,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">3</div>
                                     <div>
-                                        <div class="font-semibold">Shadow Analysis</div>
-                                        <div class="text-sm text-gray-400">Detecting anomalous shadows</div>
+                                        <div class="font-semibold">Voice & Name Analysis</div>
+                                        <div class="text-sm text-gray-400">Extracting names and words</div>
                                     </div>
                                 </div>
                             </div>
@@ -215,8 +240,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">4</div>
                                     <div>
-                                        <div class="font-semibold">Orb Detection</div>
-                                        <div class="text-sm text-gray-400">Identifying light anomalies</div>
+                                        <div class="font-semibold">Historical Context</div>
+                                        <div class="text-sm text-gray-400">Matching dates and locations</div>
                                     </div>
                                 </div>
                             </div>
@@ -224,8 +249,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">5</div>
                                     <div>
-                                        <div class="font-semibold">Audio Processing</div>
-                                        <div class="text-sm text-gray-400">EVP extraction and enhancement</div>
+                                        <div class="font-semibold">Community Database</div>
+                                        <div class="text-sm text-gray-400">Cross-referencing evidence</div>
                                     </div>
                                 </div>
                             </div>
@@ -233,8 +258,8 @@
                                 <div class="flex items-center space-x-3">
                                     <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">6</div>
                                     <div>
-                                        <div class="font-semibold">Pattern Recognition</div>
-                                        <div class="text-sm text-gray-400">Identifying paranormal signatures</div>
+                                        <div class="font-semibold">Spirit Profile Creation</div>
+                                        <div class="text-sm text-gray-400">Building complete identity</div>
                                     </div>
                                 </div>
                             </div>
@@ -243,81 +268,240 @@
                 </div>
             </div>
 
-            <!-- Final Results -->
-            <div id="finalResults" class="mt-8 space-y-6" style="display: none;">
+            <!-- Detailed Analysis Breakdown -->
+            <div id="detailedAnalysis" class="mt-8 space-y-6" style="display: none;">
                 <div class="text-center">
-                    <h2 class="text-3xl font-bold mb-4 text-green-400">Analysis Complete!</h2>
-                    <p class="text-gray-300">Entity AI has processed your evidence and found the following anomalies:</p>
+                    <h2 class="text-3xl font-bold mb-4 text-green-400">Spirit Communication Decoded</h2>
+                    <p class="text-gray-300">Entity AI has identified a spirit seeking help. Community collaboration needed.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-red-900 bg-opacity-50 p-6 rounded-lg border border-red-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">👻</div>
-                            <h3 class="text-xl font-semibold mb-2">Shadow Entities</h3>
-                            <div class="text-3xl font-bold text-red-300">3</div>
-                            <p class="text-sm text-gray-400 mt-2">Detected at timestamps: 02:34, 05:12, 08:45</p>
+                <!-- Spirit Profile -->
+                <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-purple-500">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-300 flex items-center">
+                        <i class="fas fa-user-ghost mr-3"></i>Spirit Profile: "Mary Elizabeth"
+                        <span class="ml-4 px-3 py-1 bg-red-600 text-sm rounded-full help-indicator">Needs Help</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                        <div class="spirit-profile p-4 rounded-lg">
+                            <h4 class="font-semibold text-yellow-300 mb-2">
+                                <i class="fas fa-signature mr-2"></i>Identified Names
+                            </h4>
+                            <div class="space-y-1">
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Mary Elizabeth" (92% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Tommy" (78% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Mother" (85% confidence)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="spirit-profile p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-300 mb-2">
+                                <i class="fas fa-calendar mr-2"></i>Time References
+                            </h4>
+                            <div class="space-y-1">
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"1918" (89% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"October" (76% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Before Christmas" (82% confidence)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="spirit-profile p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-300 mb-2">
+                                <i class="fas fa-map-marker-alt mr-2"></i>Location Clues
+                            </h4>
+                            <div class="space-y-1">
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Room 237" (94% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Third floor" (87% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Near the window" (73% confidence)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="spirit-profile p-4 rounded-lg">
+                            <h4 class="font-semibold text-red-300 mb-2">
+                                <i class="fas fa-heart-broken mr-2"></i>Emotional State
+                            </h4>
+                            <div class="space-y-1">
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Lost" (91% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Scared" (88% confidence)</div>
+                                <div class="evidence-tag px-2 py-1 rounded text-sm">"Looking for Tommy" (95% confidence)</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-blue-900 bg-opacity-50 p-6 rounded-lg border border-blue-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">🎵</div>
-                            <h3 class="text-xl font-semibold mb-2">EVP Recordings</h3>
-                            <div class="text-3xl font-bold text-blue-300">2</div>
-                            <p class="text-sm text-gray-400 mt-2">"Help me" and "Get out" detected</p>
+
+                    <!-- Key Messages -->
+                    <div class="bg-gray-800 p-4 rounded-lg mb-6">
+                        <h4 class="font-semibold text-purple-300 mb-3">
+                            <i class="fas fa-comments mr-2"></i>Key Spirit Messages
+                        </h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-mono text-sm">02:34</span>
+                                <div class="flex-1">
+                                    <p class="text-white">"Help me find Tommy... he was just here..."</p>
+                                    <p class="text-sm text-gray-400">Female voice, distressed, 92% confidence</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-mono text-sm">03:15</span>
+                                <div class="flex-1">
+                                    <p class="text-white">"I can't leave without my son..."</p>
+                                    <p class="text-sm text-gray-400">Same voice, maternal tone, 89% confidence</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-mono text-sm">08:45</span>
+                                <div class="flex-1">
+                                    <p class="text-white">"The fever took us both in 1918..."</p>
+                                    <p class="text-sm text-gray-400">Historical reference, 87% confidence</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-blue-400 font-mono text-sm">11:15</span>
+                                <div class="flex-1">
+                                    <p class="text-white">"Please tell him Mary is waiting..."</p>
+                                    <p class="text-sm text-gray-400">Pleading tone, 94% confidence</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-yellow-900 bg-opacity-50 p-6 rounded-lg border border-yellow-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">💫</div>
-                            <h3 class="text-xl font-semibold mb-2">Light Orbs</h3>
-                            <div class="text-3xl font-bold text-yellow-300">7</div>
-                            <p class="text-sm text-gray-400 mt-2">Various sizes and intensities</p>
+
+                    <!-- Historical Context -->
+                    <div class="bg-gray-800 p-4 rounded-lg mb-6">
+                        <h4 class="font-semibold text-yellow-300 mb-3">
+                            <i class="fas fa-book mr-2"></i>Historical Context Match
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="font-semibold text-white mb-2">1918 Flu Pandemic Records</h5>
+                                <p class="text-sm text-gray-300">St. Mary's Hospital treated numerous flu victims during the 1918 pandemic. Records show high mortality rates, especially in children's ward (3rd floor).</p>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-white mb-2">Patient Records Found</h5>
+                                <p class="text-sm text-gray-300">Mary Elizabeth Thompson, age 28, admitted October 1918 with son Thomas (Tommy), age 6. Both listed as deceased October 15, 1918.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-300">Detailed Analysis Report</h3>
-                    <div class="space-y-4">
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">Shadow Movement - 02:34</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-4/5 h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">87%</span>
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-400">Humanoid shadow detected moving against light source direction. No corresponding physical object identified.</p>
+                <!-- Community Collaboration Section -->
+                <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-pink-500">
+                    <h3 class="text-2xl font-semibold mb-4 text-pink-300 flex items-center">
+                        <i class="fas fa-users mr-3"></i>Community Help Needed
+                        <span class="ml-4 px-3 py-1 bg-orange-600 text-sm rounded-full animate-pulse">Active Case</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-300 mb-3">How You Can Help Mary</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-search text-blue-400"></i>
+                                    <span>Research Thompson family records from 1918</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-camera text-purple-400"></i>
+                                    <span>Submit evidence from Room 237 or 3rd floor</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-microphone text-pink-400"></i>
+                                    <span>Record EVP sessions asking about Tommy</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <i class="fas fa-heart text-red-400"></i>
+                                    <span>Help reunite Mary with her son's spirit</span>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">EVP Detection - 03:15</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-4/5 h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">85%</span>
+                        
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-yellow-300 mb-3">Community Evidence Pool</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between items-center">
+                                    <span>Total Evidence Submissions:</span>
+                                    <span class="font-bold text-green-400">23</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Active Investigators:</span>
+                                    <span class="font-bold text-blue-400">12</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Historical Records Found:</span>
+                                    <span class="font-bold text-purple-400">7</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Tommy Sightings Reported:</span>
+                                    <span class="font-bold text-pink-400">3</span>
                                 </div>
                             </div>
-                            <p class="text-sm text-gray-400">Clear female voice saying "Help me" detected in frequency range not present in ambient audio.</p>
                         </div>
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">Orb Manifestation - 05:12</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-full h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">92%</span>
-                                </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <button class="community-action text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105">
+                            <i class="fas fa-upload mr-2"></i>Submit Evidence
+                        </button>
+                        <button class="community-action text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105">
+                            <i class="fas fa-comments mr-2"></i>Join Discussion
+                        </button>
+                        <button class="community-action text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105">
+                            <i class="fas fa-book-open mr-2"></i>Research History
+                        </button>
+                        <button class="community-action text-white px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105">
+                            <i class="fas fa-pray mr-2"></i>Send Healing Energy
+                        </button>
+                    </div>
+
+                    <!-- Recent Community Activity -->
+                    <div class="mt-6 bg-gray-800 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-300 mb-3">
+                            <i class="fas fa-clock mr-2"></i>Recent Community Activity
+                        </h4>
+                        <div class="space-y-2 text-sm max-h-32 overflow-y-auto">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-400">@SpiritHelper92</span>
+                                <span class="text-gray-400">found hospital records mentioning Mary Thompson</span>
+                                <span class="text-xs text-gray-500">2 hours ago</span>
                             </div>
-                            <p class="text-sm text-gray-400">Bright orb with intelligent movement pattern. Rules out dust, insects, or camera artifacts.</p>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-400">@HistoryBuff</span>
+                                <span class="text-gray-400">uploaded 1918 newspaper clipping about flu outbreak</span>
+                                <span class="text-xs text-gray-500">4 hours ago</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-400">@GhostWhisperer</span>
+                                <span class="text-gray-400">recorded EVP of child's voice saying "Mama"</span>
+                                <span class="text-xs text-gray-500">6 hours ago</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-purple-400">@ParanormalDoc</span>
+                                <span class="text-gray-400">confirmed Room 237 was part of children's ward</span>
+                                <span class="text-xs text-gray-500">8 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Stories -->
+                <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-green-500">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-300">
+                        <i class="fas fa-heart mr-3"></i>Spirits We've Helped Find Peace
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-2">Eleanor & James</h4>
+                            <p class="text-sm text-gray-300 mb-2">Victorian couple reunited after 150 years</p>
+                            <span class="text-xs text-green-400">✓ Crossed over together</span>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-2">Little Sarah</h4>
+                            <p class="text-sm text-gray-300 mb-2">Lost child found her way to her grandmother</p>
+                            <span class="text-xs text-green-400">✓ Family reunion complete</span>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h4 class="font-semibold text-white mb-2">Captain Morrison</h4>
+                            <p class="text-sm text-gray-300 mb-2">Civil War soldier finally went home</p>
+                            <span class="text-xs text-green-400">✓ Mission accomplished</span>
                         </div>
                     </div>
                 </div>
@@ -331,13 +515,13 @@
         let detectionCount = 0;
 
         const detections = [
-            { time: "02:34", type: "Shadow Movement", confidence: 87, description: "Humanoid shadow detected" },
-            { time: "03:15", type: "EVP", confidence: 85, description: "Female voice: 'Help me'" },
-            { time: "05:12", type: "Orb", confidence: 92, description: "Bright orb with intelligent movement" },
-            { time: "06:22", type: "Temperature Drop", confidence: 73, description: "15°F temperature anomaly" },
-            { time: "08:45", type: "Shadow Entity", confidence: 89, description: "Full body shadow figure" },
-            { time: "09:30", type: "EVP", confidence: 67, description: "Whisper: 'Get out'" },
-            { time: "11:15", type: "Orb Cluster", confidence: 94, description: "Multiple orbs in formation" }
+            { time: "02:34", type: "Spirit Voice", confidence: 92, description: "Female voice: 'Help me find Tommy'" },
+            { time: "03:15", type: "Emotional EVP", confidence: 89, description: "Maternal distress: 'I can't leave without my son'" },
+            { time: "05:12", type: "Spirit Manifestation", confidence: 87, description: "Female figure in white dress" },
+            { time: "06:22", type: "Historical Reference", confidence: 85, description: "Voice mentions '1918' and 'fever'" },
+            { time: "08:45", type: "Name Recognition", confidence: 94, description: "Clear pronunciation of 'Mary Elizabeth'" },
+            { time: "09:30", type: "Location Clue", confidence: 88, description: "Reference to 'Room 237'" },
+            { time: "11:15", type: "Plea for Help", confidence: 96, description: "Please tell him Mary is waiting" }
         ];
 
         document.getElementById('startDemo').addEventListener('click', startDemo);
@@ -362,7 +546,7 @@
             document.getElementById('startDemo').style.display = 'inline-block';
             document.getElementById('resetDemo').style.display = 'none';
             document.getElementById('progressSection').style.display = 'none';
-            document.getElementById('finalResults').style.display = 'none';
+            document.getElementById('detailedAnalysis').style.display = 'none';
             
             // Reset progress bars
             document.getElementById('progressBar').style.width = '0%';
@@ -384,410 +568,14 @@
 
         async function runAnalysisDemo() {
             const steps = [
-                { text: "Initializing AI models...", progress: 10 },
-                { text: "Extracting video frames...", progress: 20 },
-                { text: "Analyzing motion patterns...", progress: 35 },
-                { text: "Detecting shadow anomalies...", progress: 50 },
-                { text: "Scanning for orbs and light anomalies...", progress: 65 },
-                { text: "Processing audio for EVPs...", progress: 80 },
-                { text: "Running pattern recognition...", progress: 95 },
-                { text: "Generating final report...", progress: 100 }
-            ];
-
-            <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entity AI Video Analysis Demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: #000000;
-            font-family: 'Courier New', monospace;
-        }
-        .horror-font {
-            font-family: 'Creepster', 'Chiller', 'Nosifer', cursive;
-            text-shadow: 0 0 10px #ff0080, 0 0 20px #ff0080, 0 0 30px #ff0080;
-        }
-        .neon-glow {
-            box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
-        }
-        .analysis-step {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-        .analysis-step.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .progress-bar {
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        .video-frame {
-            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-            border: 2px solid #333;
-            position: relative;
-            overflow: hidden;
-        }
-        .detection-box {
-            position: absolute;
-            border: 2px solid #ff0080;
-            background: rgba(255, 0, 128, 0.1);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        .waveform {
-            height: 60px;
-            background: linear-gradient(90deg, #333, #555, #333);
-            position: relative;
-            overflow: hidden;
-        }
-        .waveform::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, #ff0080, transparent);
-            animation: scan 3s infinite;
-        }
-        @keyframes scan {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        .confidence-meter {
-            background: linear-gradient(90deg, #ff4444, #ffaa00, #44ff44);
-            height: 8px;
-            border-radius: 4px;
-        }
-        .anomaly-indicator {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-    </style>
-</head>
-<body class="text-white">
-    <div class="min-h-screen bg-black">
-        <!-- Header -->
-        <header class="bg-gray-900 border-b border-purple-500 p-4">
-            <div class="container mx-auto flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <svg width="50" height="50" viewBox="0 0 60 60" class="drop-shadow-lg">
-                            <ellipse cx="30" cy="15" rx="25" ry="4" fill="none" stroke="#ffff00" stroke-width="2" class="neon-glow" style="filter: drop-shadow(0 0 8px #ffff00)" />
-                            <path d="M30 20 C20 20, 15 25, 15 35 L15 50 L20 45 L25 50 L30 45 L35 50 L40 45 L45 50 L45 35 C45 25, 40 20, 30 20 Z" fill="white" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-                            <path d="M22 18 L20 12 L24 15 Z" fill="#ff0080" class="neon-glow" style="filter: drop-shadow(0 0 6px #ff0080)" />
-                            <path d="M38 18 L40 12 L36 15 Z" fill="#ff0080" class="neon-glow" style="filter: drop-shadow(0 0 6px #ff0080)" />
-                            <circle cx="25" cy="30" r="3" fill="black" />
-                            <circle cx="35" cy="30" r="3" fill="black" />
-                            <ellipse cx="30" cy="38" rx="4" ry="6" fill="black" />
-                        </svg>
-                    </div>
-                    <h1 class="text-2xl font-bold horror-font">ENTITY AI ANALYZER</h1>
-                </div>
-                <div class="text-purple-300 text-sm">Live Analysis Demo</div>
-            </div>
-        </header>
-
-        <div class="container mx-auto p-6">
-            <!-- Demo Controls -->
-            <div class="text-center mb-8">
-                <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Video Evidence Analysis Demo
-                </h2>
-                <p class="text-gray-300 mb-6">Watch how Entity AI processes paranormal evidence in real-time</p>
-                <button id="startDemo" class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-lg font-semibold transition-all shadow-lg">
-                    <i class="fas fa-play mr-2"></i>Start Analysis Demo
-                </button>
-                <button id="resetDemo" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-all ml-4" style="display: none;">
-                    <i class="fas fa-redo mr-2"></i>Reset Demo
-                </button>
-            </div>
-
-            <!-- Analysis Progress -->
-            <div id="progressSection" class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700 mb-8" style="display: none;">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-xl font-semibold text-purple-300">Analysis Progress</h3>
-                    <span id="progressText" class="text-gray-400">Initializing...</span>
-                </div>
-                <div class="w-full bg-gray-700 rounded-full h-3">
-                    <div id="progressBar" class="progress-bar bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full"></div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Video Analysis Panel -->
-                <div class="space-y-6">
-                    <!-- Mock Video Frame -->
-                    <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-video mr-2"></i>Video Analysis
-                        </h3>
-                        <div class="video-frame aspect-video rounded-lg mb-4 flex items-center justify-center relative">
-                            <div class="text-gray-500 text-center">
-                                <i class="fas fa-video text-4xl mb-2"></i>
-                                <p>Haunted_Hospital_Investigation.mp4</p>
-                                <p class="text-sm">Duration: 12:34 | Resolution: 1920x1080</p>
-                            </div>
-                            <!-- Detection boxes will be added dynamically -->
-                        </div>
-                        <div class="text-sm text-gray-400 mb-2">Timeline: <span id="currentTime">00:00</span> / 12:34</div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                            <div id="videoProgress" class="bg-red-500 h-2 rounded-full" style="width: 0%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Audio Analysis -->
-                    <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-microphone mr-2"></i>Audio Analysis (EVP Detection)
-                        </h3>
-                        <div class="waveform rounded mb-4"></div>
-                        <div class="text-sm text-gray-400">
-                            <div>Frequency Range: 20Hz - 20kHz</div>
-                            <div>Noise Reduction: Active</div>
-                            <div>EVP Sensitivity: High</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Analysis Results Panel -->
-                <div class="space-y-6">
-                    <!-- Real-time Detections -->
-                    <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-search mr-2"></i>Real-time Detections
-                        </h3>
-                        <div id="detectionsList" class="space-y-3 max-h-64 overflow-y-auto">
-                            <!-- Detections will be added here -->
-                        </div>
-                    </div>
-
-                    <!-- Analysis Steps -->
-                    <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                        <h3 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-cogs mr-2"></i>Analysis Pipeline
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="analysis-step" data-step="1">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">1</div>
-                                    <div>
-                                        <div class="font-semibold">Frame Extraction</div>
-                                        <div class="text-sm text-gray-400">Extracting frames for analysis</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="analysis-step" data-step="2">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">2</div>
-                                    <div>
-                                        <div class="font-semibold">Motion Detection</div>
-                                        <div class="text-sm text-gray-400">Analyzing movement patterns</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="analysis-step" data-step="3">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">3</div>
-                                    <div>
-                                        <div class="font-semibold">Shadow Analysis</div>
-                                        <div class="text-sm text-gray-400">Detecting anomalous shadows</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="analysis-step" data-step="4">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">4</div>
-                                    <div>
-                                        <div class="font-semibold">Orb Detection</div>
-                                        <div class="text-sm text-gray-400">Identifying light anomalies</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="analysis-step" data-step="5">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">5</div>
-                                    <div>
-                                        <div class="font-semibold">Audio Processing</div>
-                                        <div class="text-sm text-gray-400">EVP extraction and enhancement</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="analysis-step" data-step="6">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">6</div>
-                                    <div>
-                                        <div class="font-semibold">Pattern Recognition</div>
-                                        <div class="text-sm text-gray-400">Identifying paranormal signatures</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Final Results -->
-            <div id="finalResults" class="mt-8 space-y-6" style="display: none;">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold mb-4 text-green-400">Analysis Complete!</h2>
-                    <p class="text-gray-300">Entity AI has processed your evidence and found the following anomalies:</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-red-900 bg-opacity-50 p-6 rounded-lg border border-red-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">👻</div>
-                            <h3 class="text-xl font-semibold mb-2">Shadow Entities</h3>
-                            <div class="text-3xl font-bold text-red-300">3</div>
-                            <p class="text-sm text-gray-400 mt-2">Detected at timestamps: 02:34, 05:12, 08:45</p>
-                        </div>
-                    </div>
-                    <div class="bg-blue-900 bg-opacity-50 p-6 rounded-lg border border-blue-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">🎵</div>
-                            <h3 class="text-xl font-semibold mb-2">EVP Recordings</h3>
-                            <div class="text-3xl font-bold text-blue-300">2</div>
-                            <p class="text-sm text-gray-400 mt-2">"Help me" and "Get out" detected</p>
-                        </div>
-                    </div>
-                    <div class="bg-yellow-900 bg-opacity-50 p-6 rounded-lg border border-yellow-500">
-                        <div class="text-center">
-                            <div class="text-3xl mb-2">💫</div>
-                            <h3 class="text-xl font-semibold mb-2">Light Orbs</h3>
-                            <div class="text-3xl font-bold text-yellow-300">7</div>
-                            <p class="text-sm text-gray-400 mt-2">Various sizes and intensities</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gray-900 bg-opacity-50 p-6 rounded-lg border border-gray-700">
-                    <h3 class="text-xl font-semibold mb-4 text-purple-300">Detailed Analysis Report</h3>
-                    <div class="space-y-4">
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">Shadow Movement - 02:34</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-4/5 h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">87%</span>
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-400">Humanoid shadow detected moving against light source direction. No corresponding physical object identified.</p>
-                        </div>
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">EVP Detection - 03:15</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-4/5 h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">85%</span>
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-400">Clear female voice saying "Help me" detected in frequency range not present in ambient audio.</p>
-                        </div>
-                        <div class="bg-gray-800 p-4 rounded">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-semibold">Orb Manifestation - 05:12</h4>
-                                <div class="flex items-center space-x-2">
-                                    <span class="text-sm">Confidence:</span>
-                                    <div class="w-20 bg-gray-700 rounded-full h-2">
-                                        <div class="confidence-meter w-full h-2 rounded-full"></div>
-                                    </div>
-                                    <span class="text-sm font-bold">92%</span>
-                                </div>
-                            </div>
-                            <p class="text-sm text-gray-400">Bright orb with intelligent movement pattern. Rules out dust, insects, or camera artifacts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        let demoRunning = false;
-        let currentStep = 0;
-        let detectionCount = 0;
-
-        const detections = [
-            { time: "02:34", type: "Shadow Movement", confidence: 87, description: "Humanoid shadow detected" },
-            { time: "03:15", type: "EVP", confidence: 85, description: "Female voice: 'Help me'" },
-            { time: "05:12", type: "Orb", confidence: 92, description: "Bright orb with intelligent movement" },
-            { time: "06:22", type: "Temperature Drop", confidence: 73, description: "15°F temperature anomaly" },
-            { time: "08:45", type: "Shadow Entity", confidence: 89, description: "Full body shadow figure" },
-            { time: "09:30", type: "EVP", confidence: 67, description: "Whisper: 'Get out'" },
-            { time: "11:15", type: "Orb Cluster", confidence: 94, description: "Multiple orbs in formation" }
-        ];
-
-        document.getElementById('startDemo').addEventListener('click', startDemo);
-        document.getElementById('resetDemo').addEventListener('click', resetDemo);
-
-        function startDemo() {
-            if (demoRunning) return;
-            
-            demoRunning = true;
-            document.getElementById('startDemo').style.display = 'none';
-            document.getElementById('resetDemo').style.display = 'inline-block';
-            document.getElementById('progressSection').style.display = 'block';
-            
-            runAnalysisDemo();
-        }
-
-        function resetDemo() {
-            demoRunning = false;
-            currentStep = 0;
-            detectionCount = 0;
-            
-            document.getElementById('startDemo').style.display = 'inline-block';
-            document.getElementById('resetDemo').style.display = 'none';
-            document.getElementById('progressSection').style.display = 'none';
-            document.getElementById('finalResults').style.display = 'none';
-            
-            // Reset progress bars
-            document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('videoProgress').style.width = '0%';
-            document.getElementById('currentTime').textContent = '00:00';
-            document.getElementById('progressText').textContent = 'Initializing...';
-            
-            // Reset analysis steps
-            document.querySelectorAll('.analysis-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            
-            // Clear detections
-            document.getElementById('detectionsList').innerHTML = '';
-            
-            // Remove detection boxes
-            document.querySelectorAll('.detection-box').forEach(box => box.remove());
-        }
-
-        async function runAnalysisDemo() {
-            const steps = [
-                { text: "Initializing AI models...", progress: 10 },
-                { text: "Extracting video frames...", progress: 20 },
-                { text: "Analyzing motion patterns...", progress: 35 },
-                { text: "Detecting shadow anomalies...", progress: 50 },
-                { text: "Scanning for orbs and light anomalies...", progress: 65 },
-                { text: "Processing audio for EVPs...", progress: 80 },
-                { text: "Running pattern recognition...", progress: 95 },
-                { text: "Generating final report...", progress: 100 }
+                { text: "Initializing spirit communication protocols...", progress: 10 },
+                { text: "Scanning for paranormal presence...", progress: 20 },
+                { text: "Analyzing voice patterns and emotions...", progress: 35 },
+                { text: "Extracting names, dates, and locations...", progress: 50 },
+                { text: "Cross-referencing historical records...", progress: 65 },
+                { text: "Building spirit profile and context...", progress: 80 },
+                { text: "Connecting to community database...", progress: 95 },
+                { text: "Generating help request for community...", progress: 100 }
             ];
 
             for (let i = 0; i < steps.length; i++) {
@@ -817,20 +605,20 @@
                     detectionCount++;
                     
                     // Add visual detection box
-                    if (detections[detectionCount - 1].type.includes('Shadow') || 
-                        detections[detectionCount - 1].type.includes('Orb')) {
+                    if (detections[detectionCount - 1].type.includes('Spirit') || 
+                        detections[detectionCount - 1].type.includes('Manifestation')) {
                         addDetectionBox();
                     }
                 }
                 
-                await sleep(1500);
+                await sleep(2000);
             }
             
-            // Show final results
+            // Show detailed analysis
             setTimeout(() => {
                 if (demoRunning) {
-                    document.getElementById('finalResults').style.display = 'block';
-                    document.getElementById('finalResults').scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('detailedAnalysis').style.display = 'block';
+                    document.getElementById('detailedAnalysis').scrollIntoView({ behavior: 'smooth' });
                 }
             }, 1000);
         }
@@ -840,8 +628,8 @@
             const detectionElement = document.createElement('div');
             detectionElement.className = 'bg-gray-800 p-3 rounded border border-gray-600 anomaly-indicator';
             
-            const confidenceColor = detection.confidence > 80 ? 'text-red-400' : 
-                                   detection.confidence > 60 ? 'text-yellow-400' : 'text-green-400';
+            const confidenceColor = detection.confidence > 90 ? 'text-green-400' : 
+                                   detection.confidence > 80 ? 'text-yellow-400' : 'text-red-400';
             
             detectionElement.innerHTML = `
                 <div class="flex justify-between items-start">
@@ -878,114 +666,12 @@
             
             videoFrame.appendChild(detectionBox);
             
-            // Remove after 3 seconds
+            // Remove after 4 seconds
             setTimeout(() => {
                 if (detectionBox.parentNode) {
                     detectionBox.remove();
                 }
-            }, 3000);
-        }
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-    </script>
-</body>
-</html>
-            for (let i = 0; i < steps.length; i++) {
-                if (!demoRunning) return;
-                
-                document.getElementById('progressText').textContent = steps[i].text;
-                document.getElementById('progressBar').style.width = steps[i].progress + '%';
-                
-                // Activate analysis step
-                if (i < 6) {
-                    document.querySelector(`[data-step="${i + 1}"]`).classList.add('active');
-                }
-                
-                // Simulate video progress
-                const videoProgress = Math.min((i + 1) * 12.5, 100);
-                document.getElementById('videoProgress').style.width = videoProgress + '%';
-                
-                // Update time
-                const minutes = Math.floor((videoProgress / 100) * 12);
-                const seconds = Math.floor(((videoProgress / 100) * 12 * 60) % 60);
-                document.getElementById('currentTime').textContent = 
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                // Add detections during analysis
-                if (i >= 2 && detectionCount < detections.length) {
-                    addDetection(detections[detectionCount]);
-                    detectionCount++;
-                    
-                    // Add visual detection box
-                    if (detections[detectionCount - 1].type.includes('Shadow') || 
-                        detections[detectionCount - 1].type.includes('Orb')) {
-                        addDetectionBox();
-                    }
-                }
-                
-                await sleep(1500);
-            }
-            
-            // Show final results
-            setTimeout(() => {
-                if (demoRunning) {
-                    document.getElementById('finalResults').style.display = 'block';
-                    document.getElementById('finalResults').scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 1000);
-        }
-
-        function addDetection(detection) {
-            const detectionsList = document.getElementById('detectionsList');
-            const detectionElement = document.createElement('div');
-            detectionElement.className = 'bg-gray-800 p-3 rounded border border-gray-600 anomaly-indicator';
-            
-            const confidenceColor = detection.confidence > 80 ? 'text-red-400' : 
-                                   detection.confidence > 60 ? 'text-yellow-400' : 'text-green-400';
-            
-            detectionElement.innerHTML = `
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h4 class="font-semibold text-white">${detection.type}</h4>
-                        <p class="text-sm text-gray-400">at ${detection.time}</p>
-                        <p class="text-sm text-gray-300 mt-1">${detection.description}</p>
-                    </div>
-                    <div class="text-right">
-                        <span class="text-lg font-bold ${confidenceColor}">${detection.confidence}%</span>
-                    </div>
-                </div>
-            `;
-            
-            detectionsList.appendChild(detectionElement);
-            detectionsList.scrollTop = detectionsList.scrollHeight;
-        }
-
-        function addDetectionBox() {
-            const videoFrame = document.querySelector('.video-frame');
-            const detectionBox = document.createElement('div');
-            detectionBox.className = 'detection-box';
-            
-            // Random position and size
-            const left = Math.random() * 60 + 10; // 10-70%
-            const top = Math.random() * 60 + 10;  // 10-70%
-            const width = Math.random() * 20 + 15; // 15-35%
-            const height = Math.random() * 20 + 15; // 15-35%
-            
-            detectionBox.style.left = left + '%';
-            detectionBox.style.top = top + '%';
-            detectionBox.style.width = width + '%';
-            detectionBox.style.height = height + '%';
-            
-            videoFrame.appendChild(detectionBox);
-            
-            // Remove after 3 seconds
-            setTimeout(() => {
-                if (detectionBox.parentNode) {
-                    detectionBox.remove();
-                }
-            }, 3000);
+            }, 4000);
         }
 
         function sleep(ms) {
